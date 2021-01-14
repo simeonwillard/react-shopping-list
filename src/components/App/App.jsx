@@ -8,103 +8,103 @@ import DisplayList from '../DisplayList/DisplayList';
 import './App.css';
 
 function App() {
+  const [newItemName, setNewItemName] = useState('');
+  const [newItemQuantity, setNewItemQuantity] = useState('');
+  const [newItemUnit, setNewItemUnit] = useState('');
+  const [list, setList] = useState([]);
 
+  useEffect(() => getShoppingList(), []);
 
-    const [newItemName, setNewItemName] = useState('');
-    const [newItemQuantity, setNewItemQuantity] = useState('');
-    const [newItemUnit, setNewItemUnit] = useState('');
-    const [list, setList] = useState([]);
+  const getShoppingList = () => {
+    axios
+      .get('/list')
+      .then((res) => {
+        console.log(res);
+        setList(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
-    useEffect(() => getShoppingList(), []);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('in handle submit, received', {
+      name: newItemName,
+      quantity: newItemQuantity,
+      unit: newItemUnit,
+    });
+    axios
+      .post('/list', {
+        name: newItemName,
+        quantity: newItemQuantity,
+        unit: newItemUnit,
+      })
+      .then((response) => {
+        setNewItemName('');
+        setNewItemQuantity('');
+        setNewItemUnit('');
+        // add get function here
+      })
+      .catch((error) => {
+        alert('Error adding food');
+        console.log(error);
+      });
+  };
 
-    const getShoppingList = () => {
-        axios
-            .get('/list')
-            .then((res) => {
-                console.log(res);
-                setList(res.data);
-            })
-            .catch((err) => console.log(err));
-    };
+  const resetItems = (list) => {
+    axios
+      .put('/list/reset', {
+        purchased: FALSE,
+      })
+      .then((response) => {
+        console.log('the purchased items have been reset');
+      })
+      .catch((error) => {
+        console.log('error in reset', error);
+      });
+  }; // end reset
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('in handle submit, received', {
-            name: newItemName,
-            quantity: newItemQuantity,
-            unit: newItemUnit,
-        });
-        axios
-            .post('/list', {
-                name: newItemName,
-                quantity: newItemQuantity,
-                unit: newItemUnit,
-            })
-            .then((response) => {
-                setNewItemName('');
-                setNewItemQuantity('');
-                setNewItemUnit('');
-                // add get function here
-            })
-            .catch((error) => {
-                alert('Error adding food');
-                console.log(error);
-            });
-    };
+  const deleteItem = () => {
+    axios
+      .delete(`/list/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        alert('ERROR IN DELETE');
+      });
+  };
 
-    const resetItems = (list) => {
+  const clearItems = () => {
+    axios
+      .delete(`/list/clear`)
+      .then((response) => {
+        console.log(resposne);
+      })
+      .catch((err) => {
+        alert('ERROR IN CLEAR');
+      });
+  };
 
-        axios.put('/list/reset', {
-            purchased: FALSE
-        }).then(response => {
-            console.log('the purchased items have been reset');
-        }).catch((error) => {
-            console.log('error in reset', error);
-        })
-    } // end reset
-
-    const deleteItem = () => {
-        axios.delete(`/list/${id}`)
-            .then((response) => {
-                console.log(response)
-            }).catch((err) => {
-                alert('ERROR IN DELETE')
-            })
-    }
-
-    const clearItems = () => {
-        axios.delete(`/list/clear`)
-            .then((response) => {
-                console.log(resposne)
-            }).catch((err) => {
-                alert('ERROR IN CLEAR')
-            })
-    }
-
-    return (
-        <div className="App">
-            <Header />
-            <main>
-                <ListForm
-                    handleSubmit={handleSubmit}
-                    newItemName={newItemName}
-                    setNewItemName={setNewItemName}
-                    newItemQuantity={newItemQuantity}
-                    setNewItemQuantity={setNewItemQuantity}
-                    newItemUnit={newItemUnit}
-                    setNewItemUnit={setNewItemUnit}
-                />
-                <DisplayList list={list} />
-                <p>Under Construction...</p>
-                <button onClick={resetItems}>Reset</button>
-                <button>Clear</button>
-
-            </main>
-        </div>
-    );
-
-
-
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <ListForm
+          handleSubmit={handleSubmit}
+          newItemName={newItemName}
+          setNewItemName={setNewItemName}
+          newItemQuantity={newItemQuantity}
+          setNewItemQuantity={setNewItemQuantity}
+          newItemUnit={newItemUnit}
+          setNewItemUnit={setNewItemUnit}
+        />
+        <DisplayList list={list} />
+        <p>Under Construction...</p>
+        <button onClick={resetItems}>Reset</button>
+        <button>Clear</button>
+      </main>
+    </div>
+  );
 }
 
 export default App;
