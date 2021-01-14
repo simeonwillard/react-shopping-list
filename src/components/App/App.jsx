@@ -57,6 +57,7 @@ function App() {
       })
       .then((response) => {
         console.log('the purchased items have been reset');
+        getShoppingList();
       })
       .catch((error) => {
         console.log('error in reset', error);
