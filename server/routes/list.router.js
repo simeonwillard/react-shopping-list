@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 
 // GET route
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "shopping_list";`;
+  const queryText = `SELECT * FROM "shopping_list" ORDER BY "name";`;
   pool
     .query(queryText)
     .then((result) => res.send(result.rows))
@@ -33,46 +33,64 @@ router.get('/', (req, res) => {
     });
 });
 router.delete('/:id', (req, res) => {
-    console.log(req.params.id)
-    let id = req.params.id
+  console.log(req.params.id)
+  let id = req.params.id
 
-    const queryText = `DELETE FROM shopping_list WHERE id = $1`
+  const queryText = `DELETE FROM shopping_list WHERE id = $1`
 
-    pool.query(queryText, [id])
+  pool.query(queryText, [id])
     .then((result) => {
-        res.sendStatus(204)
+      res.sendStatus(204)
     }).catch((err) => {
-        console.log(err)
-        res.sendStatus(500)
+      console.log(err)
+      res.sendStatus(500)
     })
 })
 
 router.delete('/clear', (req, res) => {
-    const queryText = `DELETE FROM shopping_list`
+  const queryText = `DELETE FROM shopping_list`
 
-    pool.query(queryText)
+  pool.query(queryText)
     .then((result) => {
-        res.sendStatus(204)
+      res.sendStatus(204)
     }).catch((err) => {
-        console.log(err)
+      console.log(err)
     })
 })
 
-// PUT route
+// PUT route for reset button
 router.put('/reset', (req, res) => {
-    
 
-    const queryText = `UPDATE "shopping_list" SET "purchased" = $1;`;
+  const queryText = `UPDATE "shopping_list" SET "purchased" = $1;`;
 
-    pool.query(queryText, [req.params.purchased])
+  pool.query(queryText, [req.body.purchased])
     .then((result) => {
-        console.log(result);
-        res.sendStatus(200);
+      console.log(result);
+      res.sendStatus(200);
     }).catch((error) => {
-        console.log(error);
-        res.sendStatus(500);
+      console.log(error);
+      res.sendStatus(500);
     });
-})
+});
+
+// PUT route for buy button
+router.put('/:id', (req, res) => {
+
+  let id = req.params.id;
+
+  const queryText = `UPDATE "shopping_list" 
+                       SET "purchased" = $1
+                       WHERE "id" = $2;`;
+
+  pool.query(queryText, [req.body.purchased, id])
+  .then((result) => {
+    console.log(result);
+    res.sendStatus(200);
+  }).catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+});
 
 
 module.exports = router;
