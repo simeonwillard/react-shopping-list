@@ -22,6 +22,8 @@ function ListForm({
             placeholder="item"
             value={newItemName}
             onChange={(event) => setNewItemName(event.target.value)}
+            maxlength="80"
+            required
           />
         </div>
         <div className="quantity">
@@ -32,6 +34,7 @@ function ListForm({
             placeholder="quantity"
             value={newItemQuantity}
             onChange={(event) => setNewItemQuantity(event.target.value)}
+            required
           />
         </div>
         <div className="unit">

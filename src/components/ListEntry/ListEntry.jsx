@@ -1,7 +1,12 @@
 import './ListEntry.css';
 
-function ListEntry({ item }) {
+function ListEntry({ item, deleteItem }) {
   console.log(item);
+
+  const handleDelete = () => {
+    deleteItem(item)
+  }
+
   return (
     <div className="entry">
       <p className="itemName">{item.name}</p>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import swal from 'sweetalert'
 
 import Header from '../Header/Header.jsx';
 import ListForm from '../ListForm/ListForm.jsx';
@@ -62,26 +63,47 @@ function App() {
       });
   }; // end reset
 
-  const deleteItem = () => {
+  const deleteItem = (item) => {
+      console.log('clicked ID:', item.id)
     axios
-      .delete(`/list/${id}`)
+      .delete(`/list/${item.id}`)
       .then((response) => {
         console.log(response);
+        getShoppingList()
       })
       .catch((err) => {
+          console.log(err)
         alert('ERROR IN DELETE');
       });
   };
 
   const clearItems = () => {
-    axios
-      .delete(`/list/clear`)
-      .then((response) => {
-        console.log(response);
+      console.log('in clear items')
+
+      swal({
+        title: "Remove all items from your shopping list?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,  
+      }).then((willDelete) => {
+        if (willDelete) {
+            swal("All items have been removed from your shopping list.", {
+                icon: "success",
+            })
+            axios
+          .delete('/clear')
+          .then((response) => {
+            console.log(response);
+            getShoppingList()
+          })
+          .catch((err) => {
+              console.log(err)
+            alert('ERROR IN CLEAR');
+          });
+        }
       })
-      .catch((err) => {
-        alert('ERROR IN CLEAR');
-      });
+
+    
   };
 
   return (
@@ -97,10 +119,12 @@ function App() {
           newItemUnit={newItemUnit}
           setNewItemUnit={setNewItemUnit}
         />
-        <DisplayList list={list} />
+        <DisplayList 
+            list={list}
+            deleteItem={deleteItem} />
         <p>Under Construction...</p>
         <button onClick={resetItems}>Reset</button>
-        <button>Clear</button>
+        <button onClick={clearItems}>Clear</button>
       </main>
     </div>
   );
