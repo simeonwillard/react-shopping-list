@@ -50,6 +50,24 @@ function App() {
       });
   };
 
+  const deleteItem = () => {
+    axios.delete(`/list/${id}`)
+    .then((response) => {
+        console.log(response)
+    }).catch((err) => {
+        alert('ERROR IN DELETE')
+    })
+}
+
+const clearItems = () => {
+    axios.delete(`/list/clear`)
+    .then((response) => {
+        console.log(resposne)
+    }).catch((err) => {
+        alert('ERROR IN CLEAR')
+    })
+}
+
   return (
     <div className="App">
       <Header />
@@ -68,6 +86,9 @@ function App() {
       </main>
     </div>
   );
+    
+    
+
 }
 
 export default App;
