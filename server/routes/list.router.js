@@ -47,8 +47,9 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.delete('/clear', (req, res) => {
-    const queryText = `DELETE FROM shopping_list`
+router.delete('/', (req, res) => {
+  console.log('in clear')  
+  const queryText = `DELETE FROM shopping_list`
 
     pool.query(queryText)
     .then((result) => {

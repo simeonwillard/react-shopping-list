@@ -1,7 +1,12 @@
 import './ListEntry.css';
 
-function ListEntry({ item }) {
+function ListEntry({ item, deleteItem }) {
   console.log(item);
+
+  const handleDelete = () => {
+    deleteItem(item)
+  }
+
   return (
     <div>
       <p>{item.name}</p>
@@ -9,7 +14,7 @@ function ListEntry({ item }) {
         {item.quantity} {item.unit}
       </p>
       <button>Buy</button>
-      <button>Delete</button>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }
