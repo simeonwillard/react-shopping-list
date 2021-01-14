@@ -29,8 +29,8 @@ function ListForm({
         <div className="quantity">
           <label>Quantity: </label>
           <input
-						className="quantityInput"
-            type="text"
+			className="quantityInput"
+            type="number"
             placeholder="quantity"
             value={newItemQuantity}
             onChange={(event) => setNewItemQuantity(event.target.value)}
