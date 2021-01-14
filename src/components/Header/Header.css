@@ -1,5 +1,18 @@
 .banner-header {
-  background-color: silver;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  color: antiquewhite;
+  background-color: rgb(37, 18, 18);
   padding: 0.25em;
+}
+
+.h1 {
+  font-size: 24px;
+  padding-left: 3%;
+}
+
+.check {
+  padding-left: 3%;
 }

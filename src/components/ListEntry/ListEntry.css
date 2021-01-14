@@ -1,0 +1,57 @@
+.entry {
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+  height: 200px;
+  width: 150px;
+}
+
+button {
+  color: antiquewhite;
+  margin: 3px;
+  height: 40px;
+  width: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: rgb(37, 18, 18);
+  border: 1px solid rgb(37, 18, 18);
+  border-radius: 8px;
+  transition: background-color 0.4s ease;
+  outline: none;
+}
+
+.buttonDone:hover {
+  background-color: rgb(175, 255, 175);
+  color: green;
+}
+
+.buttonDelete:hover {
+  background-color: rgb(255, 142, 142);
+  color: maroon;
+}
+
+.itemName {
+  color: rgb(37, 18, 18);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}
+
+.quantityUnit {
+  color: rgb(37, 18, 18);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

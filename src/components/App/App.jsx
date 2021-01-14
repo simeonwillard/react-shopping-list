@@ -77,7 +77,7 @@ function App() {
     axios
       .delete(`/list/clear`)
       .then((response) => {
-        console.log(resposne);
+        console.log(response);
       })
       .catch((err) => {
         alert('ERROR IN CLEAR');

@@ -1,45 +1,55 @@
+import './ListForm.css';
+
 function ListForm({
-    handleSubmit,
-    newItemName,
-    setNewItemName,
-    newItemQuantity,
-    setNewItemQuantity,
-    newItemUnit,
-    setNewItemUnit
+  handleSubmit,
+  newItemName,
+  setNewItemName,
+  newItemQuantity,
+  setNewItemQuantity,
+  newItemUnit,
+  setNewItemUnit,
 }) {
-    console.log('in ListForm');
-    return (
-        <div>
-            <h2>Add an Item</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Item: </label>
-                <input
-                    type="text"
-                    placeholder="item"
-                    value={newItemName}
-                    onChange={(event) => setNewItemName(event.target.value)}
-                />
-                <br></br>
-                <label>Quantity: </label>
-                <input
-                    type="text"
-                    placeholder="quantity"
-                    value={newItemQuantity}
-                    onChange={(event) => setNewItemQuantity(event.target.value)}
-                />
-                <label>Unit: </label>
-                <input
-                    type="text"
-                    placeholder="quantity"
-                    value={newItemUnit}
-                    onChange={(event) => setNewItemUnit(event.target.value)}
-                />
-                <br></br>
-                <button type="submit">Add Food</button>
-            </form>
+  console.log('in ListForm');
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="formContainer">
+        <p className="addItem">Add an Item!</p>
+        <div className="item">
+          <label>Item: </label>
+          <input
+					className="itemInput"
+            type="text"
+            placeholder="item"
+            value={newItemName}
+            onChange={(event) => setNewItemName(event.target.value)}
+          />
         </div>
-    )
+        <div className="quantity">
+          <label>Quantity: </label>
+          <input
+						className="quantityInput"
+            type="text"
+            placeholder="quantity"
+            value={newItemQuantity}
+            onChange={(event) => setNewItemQuantity(event.target.value)}
+          />
+        </div>
+        <div className="unit">
+          <label>Unit: </label>
+          <input
+						className="unitInput"
+            type="text"
+            placeholder="unit"
+            value={newItemUnit}
+            onChange={(event) => setNewItemUnit(event.target.value)}
+          />
+        </div>
+        <button className="submitButton" type="submit">
+          Add Food
+        </button>
+      </form>
+    </div>
+  );
 }
 
-
-export default ListForm
+export default ListForm;
