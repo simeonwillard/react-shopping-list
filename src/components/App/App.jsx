@@ -19,7 +19,6 @@ function App() {
     axios
       .get('/list')
       .then((res) => {
-        console.log(res);
         setList(res.data);
       })
       .catch((err) => console.log(err));
@@ -42,7 +41,7 @@ function App() {
         setNewItemName('');
         setNewItemQuantity('');
         setNewItemUnit('');
-        // add get function here
+        getShoppingList();
       })
       .catch((error) => {
         alert('Error adding food');
@@ -50,23 +49,46 @@ function App() {
       });
   };
 
-  const deleteItem = () => {
-    axios.delete(`/list/${id}`)
-    .then((response) => {
-        console.log(response)
-    }).catch((err) => {
-        alert('ERROR IN DELETE')
-    })
-}
+  const resetItems = (list) => {
+    axios
+      .put('/list/reset', {
+        purchased: FALSE,
+      })
+      .then((response) => {
+        console.log('the purchased items have been reset');
+      })
+      .catch((error) => {
+        console.log('error in reset', error);
+      });
+  }; // end reset
 
-const clearItems = () => {
-    axios.delete(`/list/clear`)
-    .then((response) => {
-        console.log(resposne)
-    }).catch((err) => {
-        alert('ERROR IN CLEAR')
-    })
-}
+  const deleteItem = (item) => {
+      console.log('clicked ID:', item.id)
+    axios
+      .delete(`/list/${item.id}`)
+      .then((response) => {
+        console.log(response);
+        getShoppingList()
+      })
+      .catch((err) => {
+          console.log(err)
+        alert('ERROR IN DELETE');
+      });
+  };
+
+  const clearItems = () => {
+      console.log('in clear items')
+    axios
+      .delete('/clear')
+      .then((response) => {
+        console.log(response);
+        getShoppingList()
+      })
+      .catch((err) => {
+          console.log(err)
+        alert('ERROR IN CLEAR');
+      });
+  };
 
   return (
     <div className="App">
@@ -81,14 +103,15 @@ const clearItems = () => {
           newItemUnit={newItemUnit}
           setNewItemUnit={setNewItemUnit}
         />
-        <DisplayList list={list} />
+        <DisplayList 
+            list={list}
+            deleteItem={deleteItem} />
         <p>Under Construction...</p>
+        <button onClick={resetItems}>Reset</button>
+        <button onClick={clearItems}>Clear</button>
       </main>
     </div>
   );
-    
-    
-
 }
 
 export default App;

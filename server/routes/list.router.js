@@ -24,7 +24,6 @@ router.post('/', (req, res) => {
         console.log('Please complete all fields');
         res.sendStatus(500);
     }
-
 });
 
 // GET route
@@ -53,8 +52,9 @@ router.delete('/:id', (req, res) => {
         })
 })
 
-router.delete('/clear', (req, res) => {
-    const queryText = `DELETE FROM shopping_list`
+router.delete('/', (req, res) => {
+  console.log('in clear')  
+  const queryText = `DELETE FROM shopping_list`
 
     pool.query(queryText)
         .then((result) => {
@@ -63,5 +63,22 @@ router.delete('/clear', (req, res) => {
             console.log(err)
         })
 })
+
+// PUT route
+router.put('/reset', (req, res) => {
+    
+
+    const queryText = `UPDATE "shopping_list" SET "purchased" = $1;`;
+
+    pool.query(queryText, [req.params.purchased])
+    .then((result) => {
+        console.log(result);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+})
+
 
 module.exports = router;
