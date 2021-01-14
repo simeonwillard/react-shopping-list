@@ -41,7 +41,7 @@ function App() {
         setNewItemName('');
         setNewItemQuantity('');
         setNewItemUnit('');
-        // add get function here
+        getShoppingList();
       })
       .catch((error) => {
         alert('Error adding food');

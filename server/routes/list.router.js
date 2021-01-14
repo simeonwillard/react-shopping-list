@@ -7,7 +7,7 @@ const pool = require('../modules/pool.js');
 router.post('/', (req, res) => {
   const foodToAdd = req.body;
   console.log('in post, received', foodToAdd);
-  const queryText = `INSERT INTO shopping_list ("name", "unit", "quantity")
+  const queryText = `INSERT INTO shopping_list ("name", "quantity", "unit")
     VALUES ($1, $2, $3)`;
   pool
     .query(queryText, [foodToAdd.name, foodToAdd.quantity, foodToAdd.unit])
