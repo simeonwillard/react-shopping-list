@@ -19,7 +19,6 @@ function App() {
     axios
       .get('/list')
       .then((res) => {
-        console.log(res);
         setList(res.data);
       })
       .catch((err) => console.log(err));

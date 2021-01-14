@@ -1,6 +1,7 @@
 import './ListEntry.css';
 
 function ListEntry({ item }) {
+  console.log(item);
   return (
     <div>
       <p>{item.name}</p>
