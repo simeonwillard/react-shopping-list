@@ -12,7 +12,7 @@ function ListForm({
         <div>
             <h2>Add an Item</h2>
             <form onSubmit={handleSubmit}>
-                <label>Item: </label>
+                <label>*Item: </label>
                 <input
                     type="text"
                     placeholder="item"
@@ -22,9 +22,9 @@ function ListForm({
                     required
                 />
                 <br></br>
-                <label>Quantity: </label>
+                <label>*Quantity: </label>
                 <input
-                    type="text"
+                    type="number"
                     placeholder="quantity"
                     value={newItemQuantity}
                     onChange={(event) => setNewItemQuantity(event.target.value)}
@@ -39,6 +39,7 @@ function ListForm({
                 />
                 <br></br>
                 <button type="submit">Add Food</button>
+                <p><i>Fields noted with * are required</i></p>
             </form>
         </div>
     )
