@@ -5,22 +5,24 @@ const pool = require('../modules/pool.js');
 
 // TODO - Add routes here...
 router.post('/', (req, res) => {
-    const foodToAdd = req.body
-    console.log('in post, received', foodToAdd);
-    const queryText = `INSERT INTO shopping_list ("name", "unit", "quantity")
+  const foodToAdd = req.body;
+  console.log('in post, received', foodToAdd);
+  const queryText = `INSERT INTO shopping_list ("name", "unit", "quantity")
     VALUES ($1, $2, $3)`;
-    pool.query(queryText, [foodToAdd.name, foodToAdd.quantity, foodToAdd.unit])
+  pool
+    .query(queryText, [foodToAdd.name, foodToAdd.quantity, foodToAdd.unit])
     .then((result) => {
-        console.log('added food to database,', foodToAdd);
-        res.sendStatus(201);
-    }).catch((error) => {
-        console.log('received error', error);
-        res.sendStatus(500);
+      console.log('added food to database,', foodToAdd);
+      res.sendStatus(201);
     })
-})
+    .catch((error) => {
+      console.log('received error', error);
+      res.sendStatus(500);
+    });
+});
 
 // GET route
-axios.get('/', (req, res) => {
+router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "shopping_list";`;
   pool
     .query(queryText)
