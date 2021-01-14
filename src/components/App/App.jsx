@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import swal from 'sweetalert'
 
 import Header from '../Header/Header.jsx';
 import ListForm from '../ListForm/ListForm.jsx';
@@ -78,16 +79,31 @@ function App() {
 
   const clearItems = () => {
       console.log('in clear items')
-    axios
-      .delete('/clear')
-      .then((response) => {
-        console.log(response);
-        getShoppingList()
+
+      swal({
+        title: "Remove all items from your shopping list?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,  
+      }).then((willDelete) => {
+        if (willDelete) {
+            swal("All items have been removed from your shopping list.", {
+                icon: "success",
+            })
+            axios
+          .delete('/clear')
+          .then((response) => {
+            console.log(response);
+            getShoppingList()
+          })
+          .catch((err) => {
+              console.log(err)
+            alert('ERROR IN CLEAR');
+          });
+        }
       })
-      .catch((err) => {
-          console.log(err)
-        alert('ERROR IN CLEAR');
-      });
+
+    
   };
 
   return (
