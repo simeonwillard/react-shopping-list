@@ -19,7 +19,6 @@ function App() {
     axios
       .get('/list')
       .then((res) => {
-        console.log(res);
         setList(res.data);
       })
       .catch((err) => console.log(err));
@@ -42,7 +41,7 @@ function App() {
         setNewItemName('');
         setNewItemQuantity('');
         setNewItemUnit('');
-        // add get function here
+        getShoppingList();
       })
       .catch((error) => {
         alert('Error adding food');
