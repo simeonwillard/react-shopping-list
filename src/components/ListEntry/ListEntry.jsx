@@ -20,8 +20,11 @@ function ListEntry({ item, deleteItem, purchaseItem }) {
         {item.quantity} {item.unit}
       </p>
       <div class="buttonContainer">
-        <button className="material-icons buttonDone" onClick={handlePurchaseItem}>done</button>
-        <button onClick={handleDelete} className="material-icons buttonDelete">clear</button>
+        {item.purchased
+        ? <p>purchased</p>
+        : <><button className="material-icons buttonDone" onClick={handlePurchaseItem}>done</button>
+        <button onClick={handleDelete} className="material-icons buttonDelete">clear</button></>
+      }
       </div>
     </div>
   );
