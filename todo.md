@@ -16,8 +16,8 @@
 [ ] - Get route
 [ ] - Post route
 [ ] - Update route 
-[ ] - Delete route
-[ ] - 
+[x] - Delete route
+[x] - Clear route
 
 ## OTHER?
 [ ] - Styling (Kevin...)
