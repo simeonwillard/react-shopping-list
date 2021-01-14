@@ -62,24 +62,30 @@ function App() {
       });
   }; // end reset
 
-  const deleteItem = () => {
+  const deleteItem = (item) => {
+      console.log('clicked ID:', item.id)
     axios
-      .delete(`/list/${id}`)
+      .delete(`/list/${item.id}`)
       .then((response) => {
         console.log(response);
+        getShoppingList()
       })
       .catch((err) => {
+          console.log(err)
         alert('ERROR IN DELETE');
       });
   };
 
   const clearItems = () => {
+      console.log('in clear items')
     axios
-      .delete(`/list/clear`)
+      .delete('/clear')
       .then((response) => {
-        console.log(resposne);
+        console.log(response);
+        getShoppingList()
       })
       .catch((err) => {
+          console.log(err)
         alert('ERROR IN CLEAR');
       });
   };
@@ -97,10 +103,12 @@ function App() {
           newItemUnit={newItemUnit}
           setNewItemUnit={setNewItemUnit}
         />
-        <DisplayList list={list} />
+        <DisplayList 
+            list={list}
+            deleteItem={deleteItem} />
         <p>Under Construction...</p>
         <button onClick={resetItems}>Reset</button>
-        <button>Clear</button>
+        <button onClick={clearItems}>Clear</button>
       </main>
     </div>
   );
