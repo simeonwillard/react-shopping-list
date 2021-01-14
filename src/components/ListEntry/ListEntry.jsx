@@ -14,7 +14,7 @@ function ListEntry({ item, deleteItem }) {
         {item.quantity} {item.unit}
       </p>
       <div class="buttonContainer">
-        <button className="material-icons buttonDone">done</button>
+        <button onClick={handleDelete} className="material-icons buttonDone">done</button>
         <button className="material-icons buttonDelete">clear</button>
       </div>
     </div>
