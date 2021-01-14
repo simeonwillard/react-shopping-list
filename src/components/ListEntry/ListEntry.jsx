@@ -1,11 +1,16 @@
 import './ListEntry.css';
 
-function ListEntry({ item, deleteItem }) {
+function ListEntry({ item, deleteItem, purchaseItem }) {
   console.log(item);
 
   const handleDelete = () => {
     console.log('in handle delete')
     deleteItem(item)
+  }
+
+  const handlePurchaseItem = () => {
+    purchaseItem(item);
+    console.log(item.purchased)
   }
 
   return (
@@ -15,7 +20,7 @@ function ListEntry({ item, deleteItem }) {
         {item.quantity} {item.unit}
       </p>
       <div class="buttonContainer">
-        <button className="material-icons buttonDone">done</button>
+        <button className="material-icons buttonDone" onClick={handlePurchaseItem}>done</button>
         <button onClick={handleDelete} className="material-icons buttonDelete">clear</button>
       </div>
     </div>

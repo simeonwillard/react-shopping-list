@@ -53,7 +53,7 @@ function App() {
   const resetItems = (list) => {
     axios
       .put('/list/reset', {
-        purchased: FALSE,
+        purchased: 'FALSE',
       })
       .then((response) => {
         console.log('the purchased items have been reset');
@@ -106,6 +106,18 @@ function App() {
     
   };
 
+  const purchaseItem = (item) => {
+      console.log('clicked buy!!!!!!!!!!');
+      axios.put(`/list/${item.id}`, {
+          purchased: 'TRUE'
+      }).then((response) => {
+          getShoppingList();
+      }).catch((error) => {
+          console.log(error);
+          alert('error in purchasing item');
+      });
+  }
+
   return (
     <div className="App">
       <Header />
@@ -120,9 +132,10 @@ function App() {
           setNewItemUnit={setNewItemUnit}
         />
         <DisplayList 
-            list={list}
-            deleteItem={deleteItem} />
-        <p>Under Construction...</p>
+        list={list}
+        purchaseItem={purchaseItem}
+        />
+        
         <button onClick={resetItems}>Reset</button>
         <button onClick={clearItems}>Clear</button>
       </main>
