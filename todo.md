@@ -11,8 +11,6 @@
 [ ] - Reset button (resets purchase status to false - update) SIMEON
 [ ] - Clear button (remove all items from list / delete from database - delete) JORDAN
 [ ] - 
-[ ] - 
-[ ] - 
 
 ## SERVER SIDE
 [ ] - Get route
@@ -24,6 +22,4 @@
 ## OTHER?
 [ ] - Styling (Kevin...)
 [x] - Get stuff in app (useState, useEffect, etc)
-[ ] - 
-[ ] - 
 [ ] - 
