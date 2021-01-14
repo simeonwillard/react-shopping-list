@@ -8,13 +8,15 @@ function ListEntry({ item, deleteItem }) {
   }
 
   return (
-    <div>
-      <p>{item.name}</p>
-      <p>
+    <div className="entry">
+      <p className="itemName">{item.name}</p>
+      <p className="quantityUnit">
         {item.quantity} {item.unit}
       </p>
-      <button>Buy</button>
-      <button onClick={handleDelete}>Delete</button>
+      <div class="buttonContainer">
+        <button className="material-icons buttonDone">done</button>
+        <button className="material-icons buttonDelete">clear</button>
+      </div>
     </div>
   );
 }

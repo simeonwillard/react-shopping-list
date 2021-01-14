@@ -1,0 +1,84 @@
+.formContainer {
+  display: grid;
+  border-bottom: 1px solid rgb(192, 192, 192);
+  grid-template-columns: 15% 30% 20% 20% 10%;
+  column-gap: 5px;
+  align-items: center;
+}
+
+.formContainer input {
+  border: 1px solid rgb(37, 18, 18);
+  border-radius: 8px;
+  padding-left: 8px;
+  height: 30px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.4s ease;
+  outline: none;
+}
+
+.formContainer input:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+.formContainer label {
+  color: rgb(37, 18, 18);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding-right: 8px;
+}
+
+::placeholder {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.addItem {
+  color: rgb(37, 18, 18);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  grid-column: 1 / 2;
+}
+
+.item {
+  grid-column: 2 / 3;
+}
+
+.quantity {
+  grid-column: 3 / 4;
+}
+
+.unit {
+  grid-column: 4 / 5;
+}
+
+.submitButton {
+  color: antiquewhite;
+  height: 30px;
+  width: 80px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  grid-column: 5;
+  background-color: rgb(37, 18, 18);
+  border: 1px solid rgb(37, 18, 18);
+  transition: background-color 0.4s ease;
+}
+
+.submitButton:hover {
+  background-color:  rgb(117, 105, 89);
+  color: antiquewhite;
+}
+
+.itemInput {
+  width: 75%;
+}
+
+.quantityInput,
+.unitInput {
+  width: 40%;
+}
