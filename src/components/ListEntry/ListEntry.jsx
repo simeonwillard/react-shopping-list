@@ -4,6 +4,7 @@ function ListEntry({ item, deleteItem }) {
   console.log(item);
 
   const handleDelete = () => {
+    console.log('in handle delete')
     deleteItem(item)
   }
 
@@ -14,8 +15,8 @@ function ListEntry({ item, deleteItem }) {
         {item.quantity} {item.unit}
       </p>
       <div class="buttonContainer">
-        <button onClick={handleDelete} className="material-icons buttonDone">done</button>
-        <button className="material-icons buttonDelete">clear</button>
+        <button className="material-icons buttonDone">done</button>
+        <button onClick={handleDelete} className="material-icons buttonDelete">clear</button>
       </div>
     </div>
   );
