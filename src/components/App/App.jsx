@@ -134,6 +134,7 @@ function App() {
         <DisplayList 
         list={list}
         purchaseItem={purchaseItem}
+        deleteItem={deleteItem}
         />
         
         <button onClick={resetItems}>Reset</button>
