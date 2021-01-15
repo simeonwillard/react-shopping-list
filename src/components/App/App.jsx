@@ -56,7 +56,6 @@ function App() {
             title: "Are you sure you want to reset purchase status?",
             icon: "warning",
             buttons: ['No', 'Yes'],
-            dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
                 swal("Purchase status has been reset", {
@@ -101,7 +100,6 @@ function App() {
             title: "Remove all items from your shopping list?",
             icon: "warning",
             buttons: ['No', 'Yes'],
-            dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
                 swal("All items have been removed from your shopping list.", {
@@ -154,8 +152,8 @@ function App() {
                     deleteItem={deleteItem}
                 />
 
-                <button onClick={resetItems}>Reset</button>
-                <button onClick={clearItems}>Clear</button>
+                <button onClick={resetItems} className="buttonReset">Reset</button>
+                <button onClick={clearItems} className="buttonClear">Clear</button>
             </main>
         </div>
     );
