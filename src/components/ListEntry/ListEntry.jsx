@@ -1,6 +1,6 @@
 import './ListEntry.css';
 
-function ListEntry({ item, deleteItem, purchaseItem }) {
+function ListEntry({ item, deleteItem, purchaseItem, editItem }) {
   console.log(item);
 
   const handleDelete = () => {
@@ -12,6 +12,11 @@ function ListEntry({ item, deleteItem, purchaseItem }) {
     purchaseItem(item);
     console.log(item.purchased);
   };
+
+  const handleEdit = () => {
+    editItem(item)
+    console.log('in edit with item', item);
+  }
 
   return (
     <div className="entry">

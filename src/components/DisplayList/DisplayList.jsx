@@ -1,7 +1,7 @@
 import './DisplayList.css';
 import ListEntry from '../ListEntry/ListEntry';
 
-function DisplayList({ list, deleteItem, purchaseItem }) {
+function DisplayList({ list, deleteItem, purchaseItem, editItem }) {
   console.log(list);
   return (
     <div className="displayList">
@@ -11,6 +11,7 @@ function DisplayList({ list, deleteItem, purchaseItem }) {
           item={item}
           deleteItem={deleteItem}
           purchaseItem={purchaseItem}
+          editItem={editItem}
         />
       ))}
     </div>

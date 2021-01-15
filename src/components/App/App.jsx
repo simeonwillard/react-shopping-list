@@ -23,8 +23,15 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const editItem = (item) => {
+      setNewItemName(item.name);
+      setNewItemQuantity(item.quantity);
+      setNewItemUnit(item.unit);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     console.log('in handle submit, received', {
       name: newItemName,
       quantity: newItemQuantity,
@@ -138,6 +145,7 @@ function App() {
           list={list}
           purchaseItem={purchaseItem}
           deleteItem={deleteItem}
+          editItem={editItem}
         />
       </main>
     </div>
