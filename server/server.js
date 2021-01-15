@@ -10,9 +10,9 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 app.use('/list', listRouter);
-app.use('/clear', listRouter)
+app.use('/clear', listRouter);
 
 /** ---------- START SERVER ---------- **/
-app.listen(PORT,  () => {
-    console.log('Listening on port: ', PORT);
+app.listen(PORT, () => {
+  console.log('Listening on port: ', PORT);
 });

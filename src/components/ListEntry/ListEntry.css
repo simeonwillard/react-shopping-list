@@ -5,6 +5,11 @@
   padding: 20px;
   height: 200px;
   width: 150px;
+  transition: box-shadow 0.1s ease;
+}
+
+.entry:hover {
+  box-shadow: 3px 4px 3px rgb(221, 221, 221);
 }
 
 button {
@@ -18,7 +23,7 @@ button {
   background-color: rgb(37, 18, 18);
   border: 1px solid rgb(37, 18, 18);
   border-radius: 8px;
-  transition: background-color 0.4s ease;
+  transition: color, background-color 0.3s ease;
   outline: none;
 }
 
@@ -54,4 +59,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 45px;
+}
+
+.purchased {
+  color: rgb(65, 88, 219);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 8px;
+  padding: 0px 10px;
 }

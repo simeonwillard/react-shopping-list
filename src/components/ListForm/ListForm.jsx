@@ -8,28 +8,30 @@ function ListForm({
   setNewItemQuantity,
   newItemUnit,
   setNewItemUnit,
+  resetItems,
+  clearItems,
 }) {
   console.log('in ListForm');
   return (
-    <div>
+    <div className="formResetClearContainer">
       <form onSubmit={handleSubmit} className="formContainer">
         <p className="addItem">Add an Item!</p>
         <div className="item">
           <label>Item: </label>
           <input
-					className="itemInput"
+            className="itemInput"
             type="text"
             placeholder="item"
             value={newItemName}
             onChange={(event) => setNewItemName(event.target.value)}
-            maxlength="80"
+            maxLength="80"
             required
           />
         </div>
         <div className="quantity">
           <label>Quantity: </label>
           <input
-			className="quantityInput"
+            className="quantityInput"
             type="number"
             placeholder="quantity"
             value={newItemQuantity}
@@ -40,17 +42,25 @@ function ListForm({
         <div className="unit">
           <label>Unit: </label>
           <input
-						className="unitInput"
+            className="unitInput"
             type="text"
             placeholder="unit"
             value={newItemUnit}
             onChange={(event) => setNewItemUnit(event.target.value)}
           />
         </div>
-        <button className="submitButton" type="submit">
+        <button className="listFormButton submit" type="submit">
           Add Food
         </button>
       </form>
+      <div className="resetClearContainer">
+        <button className="listFormButton reset" onClick={resetItems}>
+          Reset
+        </button>
+        <button className="listFormButton clear" onClick={clearItems}>
+          Clear
+        </button>
+      </div>
     </div>
   );
 }
