@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-import Header from '../Header/Header.jsx';
-import ListForm from '../ListForm/ListForm.jsx';
+import Header from '../Header/Header';
+import ListForm from '../ListForm/ListForm';
 import DisplayList from '../DisplayList/DisplayList';
 import './App.css';
 

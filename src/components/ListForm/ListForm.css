@@ -8,7 +8,7 @@
   display: grid;
   border-bottom: 1px solid rgb(192, 192, 192);
   border-right: 1px solid rgb(192, 192, 192);
-  grid-template-columns: 15% 30% 20% 15% 20%;
+  grid-template-columns: 15% 25% 20% 20% 20%;
   column-gap: 5px;
   align-items: center;
   min-width: 800px;
