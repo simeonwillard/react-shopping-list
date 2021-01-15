@@ -37,6 +37,11 @@ button {
   color: maroon;
 }
 
+.buttonEdit:hover {
+  background-color: rgb(199, 240, 253);
+  color: rgb(65, 88, 219);
+}
+
 .itemName {
   color: rgb(37, 18, 18);
   font-family: 'Quicksand', sans-serif;
