@@ -30,6 +30,7 @@ function ListEntry({ item, deleteItem, purchaseItem }) {
             >
               done
             </button>
+            <button className="material-icons buttonEdit">create</button>
             <button
               onClick={handleDelete}
               className="material-icons buttonDelete"
