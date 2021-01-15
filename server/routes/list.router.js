@@ -3,27 +3,27 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-// TODO - Add routes here...
+// POST route
 router.post('/', (req, res) => {
-    const foodToAdd = req.body;
-    console.log('in post, received', foodToAdd);
-    if (foodToAdd.name && foodToAdd.quantity && foodToAdd.name.length <= 80) {
-        const queryText = `INSERT INTO shopping_list ("name", "quantity", "unit")
+  const foodToAdd = req.body;
+  console.log('in post, received', foodToAdd);
+  if (foodToAdd.name && foodToAdd.quantity && foodToAdd.name.length <= 80) {
+    const queryText = `INSERT INTO shopping_list ("name", "quantity", "unit")
     VALUES ($1, $2, $3)`;
-        pool
-            .query(queryText, [foodToAdd.name, foodToAdd.quantity, foodToAdd.unit])
-            .then((result) => {
-                console.log('added food to database,', foodToAdd);
-                res.sendStatus(201);
-            })
-            .catch((error) => {
-                console.log('received error', error);
-                res.sendStatus(500);
-            });
-    } else {
-        console.log('Please complete all fields');
+    pool
+      .query(queryText, [foodToAdd.name, foodToAdd.quantity, foodToAdd.unit])
+      .then((result) => {
+        console.log('added food to database,', foodToAdd);
+        res.sendStatus(201);
+      })
+      .catch((error) => {
+        console.log('received error', error);
         res.sendStatus(500);
-    }
+      });
+  } else {
+    console.log('Please complete all fields');
+    res.sendStatus(500);
+  }
 });
 
 // GET route
@@ -37,43 +37,51 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+// DELETE route
 router.delete('/:id', (req, res) => {
-  console.log(req.params.id)
-  let id = req.params.id
+  console.log(req.params.id);
+  let id = req.params.id;
 
-  const queryText = `DELETE FROM shopping_list WHERE id = $1`
+  const queryText = `DELETE FROM shopping_list WHERE id = $1;`;
 
-    pool.query(queryText, [id])
-        .then((result) => {
-            res.sendStatus(204)
-        }).catch((err) => {
-            console.log(err)
-            res.sendStatus(500)
-        })
-})
+  pool
+    .query(queryText, [id])
+    .then((result) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
 
+// DELETE route - clear shopping list
 router.delete('/', (req, res) => {
-  console.log('in clear')  
-  const queryText = `DELETE FROM shopping_list`
+  console.log('in clear');
+  const queryText = `DELETE FROM shopping_list;`;
 
-    pool.query(queryText)
-        .then((result) => {
-            res.sendStatus(204)
-        }).catch((err) => {
-            console.log(err)
-        })
-})
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 // PUT route for reset button
 router.put('/reset', (req, res) => {
-
   const queryText = `UPDATE "shopping_list" SET "purchased" = $1;`;
 
-  pool.query(queryText, [req.body.purchased])
+  pool
+    .query(queryText, [req.body.purchased])
     .then((result) => {
       console.log(result);
       res.sendStatus(200);
-    }).catch((error) => {
+    })
+    .catch((error) => {
       console.log(error);
       res.sendStatus(500);
     });
@@ -81,22 +89,22 @@ router.put('/reset', (req, res) => {
 
 // PUT route for buy button
 router.put('/:id', (req, res) => {
-
   let id = req.params.id;
 
   const queryText = `UPDATE "shopping_list" 
                        SET "purchased" = $1
                        WHERE "id" = $2;`;
 
-  pool.query(queryText, [req.body.purchased, id])
-  .then((result) => {
-    console.log(result);
-    res.sendStatus(200);
-  }).catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
-  });
+  pool
+    .query(queryText, [req.body.purchased, id])
+    .then((result) => {
+      console.log(result);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
 });
-
 
 module.exports = router;

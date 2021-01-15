@@ -19,9 +19,7 @@ function App() {
   const getShoppingList = () => {
     axios
       .get('/list')
-      .then((res) => {
-        setList(res.data);
-      })
+      .then((res) => setList(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -32,6 +30,7 @@ function App() {
       quantity: newItemQuantity,
       unit: newItemUnit,
     });
+
     axios
       .post('/list', {
         name: newItemName,

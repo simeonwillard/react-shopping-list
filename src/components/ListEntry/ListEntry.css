@@ -5,7 +5,7 @@
   padding: 20px;
   height: 200px;
   width: 150px;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.1s ease;
 }
 
 .entry:hover {
