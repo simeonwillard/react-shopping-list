@@ -8,8 +8,11 @@ router.post('/', (req, res) => {
   const foodToAdd = req.body;
   console.log('in post, received', foodToAdd);
   if (foodToAdd.name && foodToAdd.quantity && foodToAdd.name.length <= 80) {
-    const queryText = `INSERT INTO shopping_list ("name", "quantity", "unit")
-    VALUES ($1, $2, $3)`;
+    const queryText = `
+      INSERT INTO shopping_list ("name", "quantity", "unit")
+      VALUES ($1, $2, $3);
+      `;
+
     pool
       .query(queryText, [foodToAdd.name, foodToAdd.quantity, foodToAdd.unit])
       .then((result) => {
@@ -91,9 +94,9 @@ router.put('/reset', (req, res) => {
 router.put('/:id', (req, res) => {
   let id = req.params.id;
 
-  const queryText = `UPDATE "shopping_list" 
-                       SET "purchased" = $1
-                       WHERE "id" = $2;`;
+  const queryText = `
+    UPDATE "shopping_list" SET "purchased" = $1 WHERE "id" = $2;
+    `;
 
   pool
     .query(queryText, [req.body.purchased, id])
