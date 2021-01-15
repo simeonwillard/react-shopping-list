@@ -1,6 +1,6 @@
 import './ListEntry.css';
 
-function ListEntry({ item, deleteItem, purchaseItem }) {
+function ListEntry({ item, deleteItem, purchaseItem, editItem }) {
   console.log(item);
 
   const handleDelete = () => {
@@ -11,6 +11,11 @@ function ListEntry({ item, deleteItem, purchaseItem }) {
   const handlePurchaseItem = () => {
     purchaseItem(item);
     console.log(item.purchased);
+  };
+
+  const handleEdit = () => {
+    editItem(item);
+    console.log('in edit with item', item);
   };
 
   return (
@@ -29,6 +34,9 @@ function ListEntry({ item, deleteItem, purchaseItem }) {
               onClick={handlePurchaseItem}
             >
               done
+            </button>
+            <button onClick={handleEdit} className="material-icons buttonEdit">
+              create
             </button>
             <button
               onClick={handleDelete}

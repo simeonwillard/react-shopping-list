@@ -82,6 +82,20 @@
   margin: 8px;
 }
 
+.addFoodButton {
+  color: antiquewhite;
+  height: 30px;
+  width: 90px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  grid-column: 5;
+  background-color: rgb(37, 18, 18);
+  border: 1px solid rgb(37, 18, 18);
+  transition: color, background-color 0.3s ease;
+  margin: 8px;
+}
+
 .submit:hover,
 .reset:hover {
   background-color: rgb(65, 88, 219);

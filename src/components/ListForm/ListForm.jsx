@@ -49,7 +49,7 @@ function ListForm({
             onChange={(event) => setNewItemUnit(event.target.value)}
           />
         </div>
-        <button className="listFormButton submit" type="submit">
+        <button className="addFoodButton submit" type="submit">
           Add Food
         </button>
       </form>
