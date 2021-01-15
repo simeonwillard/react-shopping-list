@@ -14,9 +14,9 @@ function ListEntry({ item, deleteItem, purchaseItem, editItem }) {
   };
 
   const handleEdit = () => {
-    editItem(item)
+    editItem(item);
     console.log('in edit with item', item);
-  }
+  };
 
   return (
     <div className="entry">
@@ -35,9 +35,9 @@ function ListEntry({ item, deleteItem, purchaseItem, editItem }) {
             >
               done
             </button>
-            <button
-            onClick={handleEdit}
-            className="material-icons buttonEdit">create</button>
+            <button onClick={handleEdit} className="material-icons buttonEdit">
+              create
+            </button>
             <button
               onClick={handleDelete}
               className="material-icons buttonDelete"
