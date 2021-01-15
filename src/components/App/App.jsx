@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import swal from 'sweetalert'
+import swal from 'sweetalert';
 
 import Header from '../Header/Header.jsx';
 import ListForm from '../ListForm/ListForm.jsx';
@@ -65,59 +65,60 @@ function App() {
   }; // end reset
 
   const deleteItem = (item) => {
-      console.log('clicked ID:', item.id)
+    console.log('clicked ID:', item.id);
     axios
       .delete(`/list/${item.id}`)
       .then((response) => {
         console.log(response);
-        getShoppingList()
+        getShoppingList();
       })
       .catch((err) => {
-          console.log(err)
+        console.log(err);
         alert('ERROR IN DELETE');
       });
   };
 
   const clearItems = () => {
-      console.log('in clear items')
+    console.log('in clear items');
 
-      swal({
-        title: "Remove all items from your shopping list?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,  
-      }).then((willDelete) => {
-        if (willDelete) {
-            swal("All items have been removed from your shopping list.", {
-                icon: "success",
-            })
-            axios
+    swal({
+      title: 'Remove all items from your shopping list?',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal('All items have been removed from your shopping list.', {
+          icon: 'success',
+        });
+        axios
           .delete('/clear')
           .then((response) => {
             console.log(response);
-            getShoppingList()
+            getShoppingList();
           })
           .catch((err) => {
-              console.log(err)
+            console.log(err);
             alert('ERROR IN CLEAR');
           });
-        }
-      })
-
-    
+      }
+    });
   };
 
   const purchaseItem = (item) => {
-      console.log('clicked buy!!!!!!!!!!');
-      axios.put(`/list/${item.id}`, {
-          purchased: 'TRUE'
-      }).then((response) => {
-          getShoppingList();
-      }).catch((error) => {
-          console.log(error);
-          alert('error in purchasing item');
+    console.log('clicked buy!!!!!!!!!!');
+    axios
+      .put(`/list/${item.id}`, {
+        purchased: 'TRUE',
+      })
+      .then((response) => {
+        getShoppingList();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('error in purchasing item');
       });
-  }
+  };
 
   return (
     <div className="App">
@@ -131,15 +132,14 @@ function App() {
           setNewItemQuantity={setNewItemQuantity}
           newItemUnit={newItemUnit}
           setNewItemUnit={setNewItemUnit}
+          resetItems={resetItems}
+          clearItems={clearItems}
         />
-        <DisplayList 
-        list={list}
-        purchaseItem={purchaseItem}
-        deleteItem={deleteItem}
+        <DisplayList
+          list={list}
+          purchaseItem={purchaseItem}
+          deleteItem={deleteItem}
         />
-        
-        <button onClick={resetItems}>Reset</button>
-        <button onClick={clearItems}>Clear</button>
       </main>
     </div>
   );
