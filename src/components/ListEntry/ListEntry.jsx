@@ -17,9 +17,9 @@ function ListEntry({ item, deleteItem, purchaseItem }) {
     <div className="entry">
       <p className="itemName">{item.name}</p>
       <p className="quantityUnit">
-        {item.quantity} {item.unit}
+        {Number(item.quantity)} {item.unit}
       </p>
-      <div class="buttonContainer">
+      <div className="buttonContainer">
         {item.purchased ? (
           <p className="purchased">Purchased!</p>
         ) : (

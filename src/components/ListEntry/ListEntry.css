@@ -23,7 +23,7 @@ button {
   background-color: rgb(37, 18, 18);
   border: 1px solid rgb(37, 18, 18);
   border-radius: 8px;
-  transition: color, background-color 0.4s ease;
+  transition: color, background-color 0.3s ease;
   outline: none;
 }
 

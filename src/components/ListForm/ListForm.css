@@ -78,7 +78,7 @@
   grid-column: 5;
   background-color: rgb(37, 18, 18);
   border: 1px solid rgb(37, 18, 18);
-  transition: color, background-color 0.4s ease;
+  transition: color, background-color 0.3s ease;
   margin: 8px;
 }
 
@@ -99,7 +99,7 @@
 
 .quantityInput,
 .unitInput {
-  width: 40%;
+  width: 50%;
 }
 
 .resetClearContainer {

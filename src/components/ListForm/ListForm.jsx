@@ -24,7 +24,7 @@ function ListForm({
             placeholder="item"
             value={newItemName}
             onChange={(event) => setNewItemName(event.target.value)}
-            maxlength="80"
+            maxLength="80"
             required
           />
         </div>

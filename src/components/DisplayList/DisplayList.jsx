@@ -4,7 +4,7 @@ import ListEntry from '../ListEntry/ListEntry';
 function DisplayList({ list, deleteItem, purchaseItem }) {
   console.log(list);
   return (
-    <div class="displayList">
+    <div className="displayList">
       {list.map((item) => (
         <ListEntry
           key={item.id}
