@@ -23,10 +23,13 @@ This app allows you to make a personalized shopping list that you can add items 
 
 ## Usage
 
-1. Lets say you are a home health aide and you go shopping for your client every Friday.
-2. A shopping list will make your life much easier, especially if your shopping list is on your phone
-3. Your life is also made easier if your shopping list can remember what you bought and how much you bought last time, or if you had something on your list but were unable to purchase that item.
-4. With this app, that home health aide's trip to the store is made much easier.
+1. Upon opening the app, the user is able to see their grocery list.
+2. The user can add a list by clicking the 'add item' button and filling out the form.
+3. The user can delete an item from their list by clicking the 'x' button on the item card.
+4. The user can mark an item as "purchased" by clicking the 'check' icon on the item card.
+5. The user can edit a listed item by clicking the 'pencil' icon on the item card.
+6. The user can reset the "purchased" items to "unpurchased" by clicking the 'reset' button at the top right of the page.
+7. The user can delete all grocery items by clicking the 'clear' button at the top right of the page.
 
 ## Built With
 - Node
